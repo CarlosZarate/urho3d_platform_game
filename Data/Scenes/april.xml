@@ -1,0 +1,999 @@
+<?xml version="1.0"?>
+<scene id="1">
+	<attribute name="Name" value="" />
+	<attribute name="Time Scale" value="1" />
+	<attribute name="Smoothing Constant" value="50" />
+	<attribute name="Snap Threshold" value="5" />
+	<attribute name="Elapsed Time" value="10.4899" />
+	<attribute name="Next Replicated Node ID" value="60" />
+	<attribute name="Next Replicated Component ID" value="119" />
+	<attribute name="Next Local Node ID" value="16777216" />
+	<attribute name="Next Local Component ID" value="16777216" />
+	<attribute name="Variables" />
+	<attribute name="Variable Names" value="" />
+	<component type="Octree" id="1" />
+	<component type="DebugRenderer" id="2" />
+	<component type="PhysicsWorld2D" id="3">
+		<attribute name="Draw Shape" value="true" />
+		<attribute name="Allow Sleeping" value="true" />
+		<attribute name="Warm Starting" value="true" />
+		<attribute name="Continuous Physics" value="true" />
+		<attribute name="Sub Stepping" value="true" />
+		<attribute name="Auto Clear Forces" value="true" />
+	</component>
+	<component type="MaterialCache2D" id="7" />
+	<component type="DrawableProxy2D" id="8" />
+	<node id="2">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Camera" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Camera" id="4">
+			<attribute name="Near Clip" value="0" />
+			<attribute name="Orthographic" value="true" />
+			<attribute name="Orthographic Size" value="8" />
+		</component>
+	</node>
+	<node id="3">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Camera" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="Camera" id="5">
+			<attribute name="Near Clip" value="0" />
+			<attribute name="Aspect Ratio" value="1.8" />
+			<attribute name="Orthographic" value="true" />
+			<attribute name="Orthographic Size" value="8" />
+		</component>
+	</node>
+	<node id="4">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="FloorSprite" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1.5625 1.5625 1.5625" />
+		<attribute name="Variables" />
+		<component type="StaticSprite2D" id="6">
+			<attribute name="Sprite" value="Sprite2D;Urho2D/area1.png" />
+		</component>
+	</node>
+	<node id="5">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 -1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="9" />
+		<component type="CollisionBox2D" id="10">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="6">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 -1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="11" />
+		<component type="CollisionBox2D" id="12">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="7">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 -0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="13" />
+		<component type="CollisionBox2D" id="14">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="8">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="15" />
+		<component type="CollisionBox2D" id="16">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="9">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="17" />
+		<component type="CollisionBox2D" id="18">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="10">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="19" />
+		<component type="CollisionBox2D" id="20">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="11">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="21" />
+		<component type="CollisionBox2D" id="22">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="12">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.75 1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="23" />
+		<component type="CollisionBox2D" id="24">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="13">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 -1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="25" />
+		<component type="CollisionBox2D" id="26">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="14">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 -1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="27" />
+		<component type="CollisionBox2D" id="28">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="15">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 -0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="29" />
+		<component type="CollisionBox2D" id="30">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="16">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="31" />
+		<component type="CollisionBox2D" id="32">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="17">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="33" />
+		<component type="CollisionBox2D" id="34">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="18">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="35" />
+		<component type="CollisionBox2D" id="36">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="19">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="37" />
+		<component type="CollisionBox2D" id="38">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="20">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-1.25 1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="39" />
+		<component type="CollisionBox2D" id="40">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="21">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 -1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="41" />
+		<component type="CollisionBox2D" id="42">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="22">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 -1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="43" />
+		<component type="CollisionBox2D" id="44">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="23">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 -0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="45" />
+		<component type="CollisionBox2D" id="46">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="24">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="47" />
+		<component type="CollisionBox2D" id="48">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="25">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="49" />
+		<component type="CollisionBox2D" id="50">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="26">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="51" />
+		<component type="CollisionBox2D" id="52">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="27">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="53" />
+		<component type="CollisionBox2D" id="54">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="28">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-0.75 1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="55" />
+		<component type="CollisionBox2D" id="56">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="29">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 -1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="57" />
+		<component type="CollisionBox2D" id="58">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="30">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 -1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="59" />
+		<component type="CollisionBox2D" id="60">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="31">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 -0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="61" />
+		<component type="CollisionBox2D" id="62">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="32">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="63" />
+		<component type="CollisionBox2D" id="64">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="33">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="65" />
+		<component type="CollisionBox2D" id="66">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="34">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="67" />
+		<component type="CollisionBox2D" id="68">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="35">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="69" />
+		<component type="CollisionBox2D" id="70">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="36">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="0.75 1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="71" />
+		<component type="CollisionBox2D" id="72">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="37">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 -1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="73" />
+		<component type="CollisionBox2D" id="74">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="38">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 -1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="75" />
+		<component type="CollisionBox2D" id="76">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="39">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 -0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="77" />
+		<component type="CollisionBox2D" id="78">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="40">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="79" />
+		<component type="CollisionBox2D" id="80">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="41">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="81" />
+		<component type="CollisionBox2D" id="82">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="42">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="83" />
+		<component type="CollisionBox2D" id="84">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="43">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 1.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="85" />
+		<component type="CollisionBox2D" id="86">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="44">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="1.25 1.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="87" />
+		<component type="CollisionBox2D" id="88">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="45">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="89" />
+		<component type="CollisionBox2D" id="90">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="46">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="91" />
+		<component type="CollisionBox2D" id="92">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="47">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="93" />
+		<component type="CollisionBox2D" id="94">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="48">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.25 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="95" />
+		<component type="CollisionBox2D" id="96">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="49">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.25 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="97" />
+		<component type="CollisionBox2D" id="98">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="50">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-5.25 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="99" />
+		<component type="CollisionBox2D" id="100">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="51">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="101" />
+		<component type="CollisionBox2D" id="102">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="52">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="103" />
+		<component type="CollisionBox2D" id="104">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="53">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="105" />
+		<component type="CollisionBox2D" id="106">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="54">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.25 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="107" />
+		<component type="CollisionBox2D" id="108">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="55">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.25 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="109" />
+		<component type="CollisionBox2D" id="110">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="56">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-4.25 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="111" />
+		<component type="CollisionBox2D" id="112">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="57">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-3.75 -0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="113" />
+		<component type="CollisionBox2D" id="114">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="58">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-3.75 0.25 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="115" />
+		<component type="CollisionBox2D" id="116">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+	<node id="59">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="RigidBody" />
+		<attribute name="Position" value="-3.75 0.75 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<component type="RigidBody2D" id="117" />
+		<component type="CollisionBox2D" id="118">
+			<attribute name="Size" value="0.5 0.5" />
+			<attribute name="Category Bits" value="1" />
+			<attribute name="Mask Bits" value="65535" />
+			<attribute name="Density" value="1" />
+			<attribute name="Friction" value="0.5" />
+			<attribute name="Restitution" value="0.1" />
+		</component>
+	</node>
+</scene>

@@ -1,0 +1,280 @@
+#include "PlayerEntity.h"
+#include "Context.h"
+#include "Component.h"
+#include "Node.h"
+#include "RigidBody2D.h"
+#include "iostream"
+#include "AnimatedSprite2D.h"
+#include "AnimationSet2D.h"
+#include "PhysicsEvents2D.h"
+#include "BulletEntity.h"
+#include "StaticSprite2D.h"
+#include "ResourceCache.h"
+#include "Scene.h"
+#include "CollisionCircle2D.h"
+#include "CollisionPolygon2D.h"
+#include "ConstraintWheel2D.h"
+#include "RigidBody2D.h"
+#include "Input.h"
+#include "Vector3.h"
+#include "Graphics.h"
+#include "Camera.h"
+#include "PhysicsWorld2D.h"
+#include "DebugRenderer.h"
+#include "EnemyEntity.h"
+#include <math.h>
+#include "Box2D/Box2D.h"
+
+#define DEGTORAD 0.0174532925199432957f
+#define RADTODEG 57.295779513082320876f
+
+PlayerEntity::PlayerEntity(Context* context) : LogicComponent(context)
+{
+	SetUpdateEventMask(USE_UPDATE);
+}
+
+PlayerEntity::~PlayerEntity()
+{
+}
+
+void PlayerEntity::RegisterObject(Context* context)
+{
+	context->RegisterFactory<PlayerEntity>();
+}
+
+void PlayerEntity::Start()
+{
+    ResourceCache* cache = GetSubsystem<ResourceCache>();
+    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/gladiador.scml");
+    if (!animationSet)
+        return;
+
+    AnimatedSprite2D* animatedSprite = node_->CreateComponent<AnimatedSprite2D>();
+    animatedSprite->SetLayer(100);
+    // Set animation
+    animatedSprite->SetAnimation(animationSet, "idle");
+    animatedSprite->SetSpeed(1.5f);
+
+    RigidBody2D* bodysprite = node_->CreateComponent<RigidBody2D>();
+    bodysprite->SetBodyType(BT_DYNAMIC);
+    bodysprite->SetFixedRotation(true);
+
+    PODVector<Vector2> vertices;
+    vertices.Push(Vector2(-1,3));
+    vertices.Push(Vector2(1,3));
+    vertices.Push(Vector2(-1,-1));
+    vertices.Push(Vector2(1,-1));
+
+    CollisionPolygon2D* box = node_->CreateComponent<CollisionPolygon2D>();
+    box->SetVertices(vertices);
+    box->SetDensity(1.0f);
+    box->SetFriction(0.0f);
+    box->SetRestitution(0.1f);
+    box->SetMaskBits(65534);
+    box->SetCategoryBits(16384);
+
+    CollisionCircle2D* circle = node_->CreateComponent<CollisionCircle2D>();
+    circle->SetCenter(0,-0.6f);
+    circle->SetRadius(1.0f);
+    circle->SetDensity(1.0f);
+    circle->SetFriction(0.4f);
+    circle->SetRestitution(0.0f);
+    circle->SetMaskBits(65534);
+    circle->SetCategoryBits(16384);
+
+    bodysprite->SetLinearVelocity(Vector2::ZERO);
+}
+
+void PlayerEntity::DelayedStart()
+{
+
+}
+
+void PlayerEntity::Stop()
+{
+}
+
+void PlayerEntity::Update(float timeStep)
+{
+    RigidBody2D* body = GetComponent<RigidBody2D>();
+    AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+
+    Vector2 vel = body->GetLinearVelocity();
+
+    if (controls_.IsDown(CTRL_LEFT))
+    {
+        vel.x_ = -2.0f;
+        animatesprite->SetFlipX(false);
+    }
+
+    if (controls_.IsDown(CTRL_RIGHT))
+    {
+        vel.x_ = 2.0f;
+        animatesprite->SetFlipX(true);
+    }
+
+    if(!isBusy)
+    {
+        if(CastGround())
+        {
+            if(!controls_.IsDown(CTRL_RIGHT) && !controls_.IsDown(CTRL_LEFT))
+            {
+                if(animatesprite->GetAnimation()!= "idle")
+                    animatesprite->SetAnimation("idle", LM_DEFAULT);
+            }
+            else
+            {
+                if(animatesprite->GetAnimation()!= "run")
+                    animatesprite->SetAnimation("run", LM_DEFAULT);
+            }
+        }
+        else
+        {
+            if(animatesprite->GetAnimation()!= "jumpidle")
+                animatesprite->SetAnimation("jumpidle", LM_FORCE_CLAMPED);
+        }
+    }
+
+    else{
+        timeBusy+= timeStep;
+        if(timeBusy > timeanim)
+        {
+            isBusy = false;
+            timeBusy = 0;
+        }
+    }
+
+    body->SetLinearVelocity(vel);
+
+    if (controls_.IsDown(CTRL_UP))
+    {
+        body->ApplyLinearImpulse(Vector2(0,2.4f),node_->GetPosition2D(),true );
+        controls_.Set(CTRL_UP,false);
+    }
+}
+
+void PlayerEntity::Shoot()
+{
+    ResourceCache* cache = GetSubsystem<ResourceCache>();
+    AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+
+    Vector2 dir;
+
+    if(animatesprite->GetFlipX())
+        dir = Vector2(1,0);
+    else
+        dir = Vector2(-1,0);
+
+	SharedPtr<Node> bulletNode_(GetScene()->CreateChild("p_bullet"));
+	bulletNode_->SetPosition2D(node_->GetPosition2D());
+
+    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/shooteffects.scml");
+    if (!animationSet)
+        return;
+
+    AnimatedSprite2D* animatedSprite = bulletNode_->CreateComponent<AnimatedSprite2D>();
+    animatedSprite->SetLayer(100);
+    animatedSprite->SetAnimation(animationSet, "shoot1");
+    animatedSprite->SetLoopMode(LM_FORCE_LOOPED);
+
+	RigidBody2D* bulletBody = bulletNode_->CreateComponent<RigidBody2D>();
+    bulletBody->SetBodyType(BT_DYNAMIC);
+    //bulletBody->SetFixedRotation(true);
+    bulletBody->SetBullet(true);
+    bulletBody->SetGravityScale(0);
+
+    CollisionCircle2D* circleshape = bulletNode_->CreateComponent<CollisionCircle2D>();
+    circleshape->SetRadius(0.08f);
+    circleshape->SetDensity(1.0f);
+    circleshape->SetFriction(0.0f);
+    circleshape->SetRestitution(0.0f);
+    circleshape->SetMaskBits(49146);
+
+
+	/// create Enemy component which controls the Enemy behavior
+
+	bulletBody->SetLinearVelocity(dir*5);
+	BulletEntity* b = bulletNode_->CreateComponent<BulletEntity>();
+    b->SetDuration(0.25f);
+}
+
+void PlayerEntity::SetAtack()
+{
+    AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+    if(CastGround())
+    {
+        if(animatesprite->GetAnimation()!= "atack" && animatesprite->GetAnimation()!= "hurt")
+        {
+            animatesprite->SetAnimation("atack", LM_FORCE_CLAMPED);
+            isBusy = true;
+            timeBusy = 0;
+            timeanim = 0.25f;
+            Shoot();
+        }
+    }
+    else
+    {
+        if(animatesprite->GetAnimation()!= "jumpatack" && animatesprite->GetAnimation()!= "hurt")
+        {
+            animatesprite->SetAnimation("jumpatack", LM_FORCE_CLAMPED);
+            isBusy = true;
+            timeBusy = 0;
+            timeanim = 0.25f;
+            Shoot();
+        }
+    }
+}
+
+void PlayerEntity::SetHurt(Vector2 pos)
+{
+    AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+    if(animatesprite->GetAnimation()!= "hurt")
+    {
+        animatesprite->SetAnimation("hurt", LM_FORCE_CLAMPED);
+        isBusy = true;
+        timeBusy = 0;
+        timeanim = 0.26f;
+        RigidBody2D* body = GetComponent<RigidBody2D>();
+        if(pos.x_>node_->GetPosition2D().x_)
+            body->ApplyLinearImpulse(Vector2(-0.5f,0.5f),node_->GetPosition2D(),true );
+        else
+            body->ApplyLinearImpulse(Vector2(0.5f,0.5f),node_->GetPosition2D(),true );
+    }
+}
+
+void PlayerEntity::SetJump()
+{
+    AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+    if(CastGround())
+    {
+        controls_.Set(CTRL_UP,true);
+        if(animatesprite->GetAnimation()!= "jump")
+        {
+            animatesprite->SetAnimation("jump", LM_FORCE_CLAMPED);
+            isBusy = true;
+            timeBusy = 0;
+            timeanim = 0.35f;
+        }
+    }
+}
+
+bool PlayerEntity::CastGround()
+{
+    DebugRenderer* debug = GetScene()->GetComponent<DebugRenderer>();
+    PhysicsWorld2D* physicsWorld = GetScene()->GetComponent<PhysicsWorld2D>();
+    /*cast ground*/
+    Vector2 originpos = node_->GetPosition2D();
+    Vector2 FinishC = originpos + Vector2(0,-0.35);
+
+    PhysicsRaycastResult2D RayCastC;
+    physicsWorld->RaycastSingle(RayCastC, originpos , FinishC,1);
+    debug->AddLine( Vector3(originpos.x_, originpos.y_,0),
+                            Vector3(FinishC.x_, FinishC.y_,0),
+                            Color(1, 0, 0, 1),
+                            false );
+    if ( RayCastC.body_)
+    {
+        return true;
+    }
+    return false;
+}

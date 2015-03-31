@@ -1,0 +1,18 @@
+<TextureAtlas imagePath="reptil.png">
+	<SubTexture name="atack_01" x="0" y="276" width="70" height="44"/>
+	<SubTexture name="atack_02" x="0" y="230" width="70" height="44"/>
+	<SubTexture name="atack_03" x="0" y="184" width="70" height="44"/>
+	<SubTexture name="atck_04" x="0" y="138" width="70" height="44"/>
+	<SubTexture name="idle_01" x="0" y="92" width="70" height="44"/>
+	<SubTexture name="idle_02" x="0" y="46" width="70" height="44"/>
+	<SubTexture name="idle_03" x="0" y="0" width="70" height="44"/>
+	<SubTexture name="run_01" x="0" y="322" width="70" height="44"/>
+	<SubTexture name="run_02" x="72" y="138" width="70" height="44"/>
+	<SubTexture name="run_03" x="72" y="92" width="70" height="44"/>
+	<SubTexture name="run_04" x="72" y="46" width="70" height="44"/>
+	<SubTexture name="up_01" x="72" y="0" width="70" height="44"/>
+	<SubTexture name="up_02" x="0" y="460" width="70" height="44"/>
+	<SubTexture name="up_03" x="0" y="414" width="70" height="44"/>
+	<SubTexture name="up_04" x="0" y="368" width="70" height="44"/>
+	<SubTexture name="up_05" x="72" y="184" width="70" height="44"/>
+</TextureAtlas>

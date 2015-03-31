@@ -1,0 +1,9 @@
+# -- Urho3D------
+
+bin/Release/*
+bin/Debug/*
+obj/*
+*.cbp
+*.dll
+*.depend
+*.layout

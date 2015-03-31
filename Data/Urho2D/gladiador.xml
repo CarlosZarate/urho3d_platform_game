@@ -1,0 +1,13 @@
+<TextureAtlas imagePath="gladiador.png">
+	<SubTexture name="Sword_0_blur_0" x="0" y="0" width="471" height="413"/>
+	<SubTexture name="arma" x="421" y="415" width="183" height="241"/>
+	<SubTexture name="brazo" x="606" y="381" width="85" height="116"/>
+	<SubTexture name="brazo1" x="157" y="588" width="122" height="65"/>
+	<SubTexture name="brazo2" x="281" y="588" width="122" height="64"/>
+	<SubTexture name="casco" x="473" y="0" width="225" height="379"/>
+	<SubTexture name="cintura" x="0" y="588" width="155" height="77"/>
+	<SubTexture name="pie" x="606" y="587" width="83" height="74"/>
+	<SubTexture name="pierna" x="606" y="499" width="83" height="86"/>
+	<SubTexture name="torso" x="226" y="415" width="193" height="171"/>
+	<SubTexture name="visor" x="0" y="415" width="224" height="126"/>
+</TextureAtlas>

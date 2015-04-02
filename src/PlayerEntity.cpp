@@ -45,7 +45,7 @@ void PlayerEntity::RegisterObject(Context* context)
 void PlayerEntity::Start()
 {
     ResourceCache* cache = GetSubsystem<ResourceCache>();
-    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/gladiador.scml");
+    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/gladiador2.scml");
     if (!animationSet)
         return;
 
@@ -98,6 +98,14 @@ void PlayerEntity::Update(float timeStep)
 {
     RigidBody2D* body = GetComponent<RigidBody2D>();
     AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
+
+
+    if(isDead)
+    {
+        if(animatesprite->GetAnimation()!= "dead")
+            animatesprite->SetAnimation("dead", LM_DEFAULT);
+        return;
+    }
 
     Vector2 vel = body->GetLinearVelocity();
 
@@ -227,6 +235,8 @@ void PlayerEntity::SetAtack()
 
 void PlayerEntity::SetHurt(Vector2 pos)
 {
+    if(!CountHeart)
+        return;
     AnimatedSprite2D* animatesprite = GetComponent<AnimatedSprite2D>();
     if(animatesprite->GetAnimation()!= "hurt")
     {
@@ -239,7 +249,27 @@ void PlayerEntity::SetHurt(Vector2 pos)
             body->ApplyLinearImpulse(Vector2(-0.5f,0.5f),node_->GetPosition2D(),true );
         else
             body->ApplyLinearImpulse(Vector2(0.5f,0.5f),node_->GetPosition2D(),true );
+        ReduceHeart();
     }
+}
+
+void PlayerEntity::ReduceHeart()
+{
+    CountHeart--;
+    {
+		using namespace PlayerHurt;
+        if(!CountHeart)
+            isDead = true;
+		VariantMap& eventData = GetEventDataMap();
+		eventData[P_ISDEAD] = isDead;
+
+		SendEvent(E_PLAYERHURT, eventData);
+	}
+}
+
+void PlayerEntity::SetHeart(int count)
+{
+    CountHeart = count;
 }
 
 void PlayerEntity::SetJump()

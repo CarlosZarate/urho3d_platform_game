@@ -1,39 +1,11 @@
-[Tue Mar 31 16:04:10 2015] INFO: Opened log file PlatformGame.log
-[Tue Mar 31 16:04:10 2015] INFO: Created 3 worker threads
-[Tue Mar 31 16:04:10 2015] INFO: Added resource path D:/workspace/c++/platform_game/Data/
-[Tue Mar 31 16:04:10 2015] INFO: Added resource path D:/workspace/c++/platform_game/CoreData/
-[Tue Mar 31 16:04:10 2015] WARNING: Skipped autoload folder Extra as it does not exist
-[Tue Mar 31 16:04:10 2015] INFO: Set screen mode 800x600 windowed
-[Tue Mar 31 16:04:10 2015] INFO: Initialized input
-[Tue Mar 31 16:04:10 2015] INFO: Initialized user interface
-[Tue Mar 31 16:04:10 2015] INFO: Initialized renderer
-[Tue Mar 31 16:04:10 2015] INFO: Set audio mode 44100 Hz stereo interpolated
-[Tue Mar 31 16:04:10 2015] INFO: Initialized engine
-
-Used resources:
-Textures/Ramp.png
-Textures/Spot.png
-Textures/UI.png
-Textures/Urho3dLogo.png
-Urho2D/tiles_spritesheet.png
-Urho2D/gladiador.png
-Urho2D/tortuga2.png
-Urho2D/shooteffects.png
-Techniques/NoTexture.xml
-RenderPaths/Forward.xml
-UI/DefaultStyle.xml
-GUI/MainMenu.xml
-Scenes/nodo_map.xml
-Textures/UrhoIcon.png
-Fonts/Anonymous Pro.ttf
-Shaders/GLSL/Basic.glsl
-Urho2D/nivel1.tmx
-Urho2D/bg.png
-Urho2D/platform.png
-Urho2D/bullet2.png
-Urho2D/gladiador.xml
-Urho2D/tortuga2.xml
-Urho2D/shooteffects.xml
-Urho2D/gladiador.scml
-Urho2D/tortuga2.scml
-Urho2D/shooteffects.scml
+[Wed Apr 01 23:54:14 2015] INFO: Opened log file PlatformGame.log
+[Wed Apr 01 23:54:14 2015] INFO: Created 3 worker threads
+[Wed Apr 01 23:54:14 2015] INFO: Added resource path D:/workspace/c++/platform_game/Data/
+[Wed Apr 01 23:54:14 2015] INFO: Added resource path D:/workspace/c++/platform_game/CoreData/
+[Wed Apr 01 23:54:14 2015] WARNING: Skipped autoload folder Extra as it does not exist
+[Wed Apr 01 23:54:14 2015] INFO: Set screen mode 800x600 windowed
+[Wed Apr 01 23:54:14 2015] INFO: Initialized input
+[Wed Apr 01 23:54:14 2015] INFO: Initialized user interface
+[Wed Apr 01 23:54:14 2015] INFO: Initialized renderer
+[Wed Apr 01 23:54:14 2015] INFO: Set audio mode 44100 Hz stereo interpolated
+[Wed Apr 01 23:54:14 2015] INFO: Initialized engine

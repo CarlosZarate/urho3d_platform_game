@@ -74,6 +74,10 @@ private:
 
     void HandleJoystickAxisMove(StringHash eventType, VariantMap& eventData);
 
+    void ReduceHearts(StringHash eventType, VariantMap& eventData);
+
+    void CreateHearts();
+
 	SharedPtr<Scene> scene_;
 
 	SharedPtr<Node> cameraNode_;
@@ -84,13 +88,18 @@ private:
 
 	Node* bgNode_;
 
+    int player_hearts = 0;
+
 	/// The controllable character component.
     WeakPtr<PlayerEntity> player_;
     WeakPtr<EnemyEntity> enemy_;
 
     Vector<Node*> RemoveBulletList;
+    Vector<Sprite*> CountHeart;
 
     bool upPressButoon = true;
+    bool isPause = false;
+    bool isDead = false;
 
 protected:
     Vector2 GetMousePositionXY();

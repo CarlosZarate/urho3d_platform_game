@@ -8,11 +8,9 @@
 // All Urho3D classes reside in namespace Urho3D
 namespace Urho3D
 {
-
-	/// Enemy died
-	EVENT(E_PLAYERDIED, PlayerDied)
-	{                                           // bool
-		PARAM(P_NODE, NodePtr);                 // Node Ptr
+	EVENT(E_PLAYERHURT, PlayerHurt)
+	{
+		PARAM(P_ISDEAD, IsDead);                 // bool
 	}
 }
 
@@ -53,15 +51,19 @@ public:
     void SetJump();
     void SetAtack();
     void SetHurt(Vector2 pos);
+    void SetHeart(int count);
 
 	/// Movement controls. Assigned by the main program each frame.
     Controls controls_;
 private:
     bool CastGround();
+    void ReduceHeart();
 
+    bool isDead = false;
     bool isjump = true;
     bool isAtack = false;
     float timeanim = 0;
     float isBusy = false;
     float timeBusy = 0;
+    int CountHeart = 0;
 };

@@ -9,8 +9,10 @@
 #include "Renderer.h"
 #include "ResourceCache.h"
 #include "Scene.h"
+#include "Sprite.h"
 #include "Sprite2D.h"
 #include "StaticSprite2D.h"
+#include "Texture2D.h"
 #include "Text.h"
 #include "DebugNew.h"
 #include "UIElement.h"
@@ -63,6 +65,7 @@ GamePlayState::~GamePlayState()
 
 bool GamePlayState::Begin()
 {
+    player_hearts = 5;
 	// Create the UI content
 	CreateUI();
 	// Create the scene content
@@ -148,6 +151,7 @@ void GamePlayState::CreateScene()
     SharedPtr<Node> spriteNode(scene_->CreateChild("Player"));
     spriteNode->SetPosition2D(position);
     player_ = spriteNode->CreateComponent<PlayerEntity>();
+    player_->SetHeart(player_hearts);
     spriteNode->SetScale(0.2f);
 
     /*LuaFile* scriptFile = cache->GetResource<LuaFile>("Scripts/player.lua");
@@ -173,7 +177,44 @@ void GamePlayState::CreateScene()
 void GamePlayState::CreateUI()
 {
 	ResourceCache* cache = GetSubsystem<ResourceCache>();
-    UI* ui = GetSubsystem<UI>();
+    // Create a draggable Fish button
+    Sprite* casco = new Sprite(context_);
+    casco->SetTexture(cache->GetResource<Texture2D>("Urho2D/casco.png")); // Set texture
+    casco->SetSize(75, 100);
+    casco->SetPosition(20, 16);
+    casco->SetName("Casco");
+    GetSubsystem<UI>()->GetRoot()->AddChild(casco);
+    CreateHearts();
+}
+
+void GamePlayState::CreateHearts()
+{
+    ResourceCache* cache = GetSubsystem<ResourceCache>();
+    for(int i = 0; i < player_hearts; i++)
+    {
+        Sprite* heart = new Sprite(context_);
+        heart->SetTexture(cache->GetResource<Texture2D>("Urho2D/heart.png")); // Set texture
+        heart->SetSize(40, 37);
+        heart->SetPosition(100+(i*45), 50);
+        heart->SetName("heart");
+        GetSubsystem<UI>()->GetRoot()->AddChild(heart);
+        CountHeart.Push(heart);
+    }
+}
+
+void GamePlayState::ReduceHearts(StringHash eventType, VariantMap& eventData)
+{
+    using namespace PlayerHurt;
+
+    isDead = eventData[P_ISDEAD].GetBool();
+
+    if(!CountHeart.Empty())
+    {
+        Sprite* heart = CountHeart.Back();
+        GetSubsystem<UI>()->GetRoot()->RemoveChild(heart);
+        heart->Remove();
+        CountHeart.Pop();
+    }
 }
 
 void GamePlayState::SetupViewport()
@@ -192,9 +233,12 @@ void GamePlayState::SubscribeToEvents()
     SubscribeToEvent(E_UPDATE, HANDLER(GamePlayState, HandleUpdate));
     SubscribeToEvent(E_PHYSICSBEGINCONTACT2D, HANDLER(GamePlayState, HandleBeginContact));
     SubscribeToEvent(E_PHYSICSENDCONTACT2D, HANDLER(GamePlayState, HandleEndContact));
+    SubscribeToEvent(E_PLAYERHURT, HANDLER(GamePlayState, ReduceHearts));
     /*SubscribeToEvent(E_JOYSTICKBUTTONDOWN, HANDLER(GamePlayState, HandleJoystickButtonDownPressed));
     SubscribeToEvent(E_JOYSTICKAXISMOVE, HANDLER(GamePlayState, HandleJoystickAxisMove));*/
 }
+
+
 
 void GamePlayState::HandleBeginContact(StringHash eventType, VariantMap& eventData)
 {
@@ -269,7 +313,7 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
 
     Vector2 posplayer(player_->GetNode()->GetPosition2D());
 
-    if (player_)
+    if (player_ && !isDead)
     {
         // Clear previous controls
         player_->controls_.Set(CTRL_DOWN | CTRL_LEFT | CTRL_RIGHT | LOOK_LEFT, false);
@@ -295,6 +339,12 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
         Node* current = RemoveBulletList.Back();
         current->Remove();
         RemoveBulletList.Pop();
+    }
+
+    if (input->GetKeyPress('P') || input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_START))
+    {
+        isPause = !isPause;
+        scene_->SetUpdateEnabled(isPause);
     }
 
     if (input->GetKeyPress('O'))

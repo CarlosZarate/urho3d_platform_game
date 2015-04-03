@@ -1,9 +1,10 @@
-#include "EnemyEntity.h"
+
+#include "iostream"
+
 #include "Context.h"
 #include "Component.h"
 #include "Node.h"
 #include "RigidBody2D.h"
-#include "iostream"
 #include "AnimatedSprite2D.h"
 #include "AnimationSet2D.h"
 #include "PhysicsEvents2D.h"
@@ -21,6 +22,9 @@
 #include "math.h"
 #include "DebugRenderer.h"
 #include "PhysicsWorld2D.h"
+#include "StaticSprite2D.h"
+
+#include "EnemyEntity.h"
 
 EnemyEntity::EnemyEntity(Context* context) : LogicComponent(context)
 {

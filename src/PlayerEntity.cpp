@@ -45,7 +45,7 @@ void PlayerEntity::RegisterObject(Context* context)
 void PlayerEntity::Start()
 {
     ResourceCache* cache = GetSubsystem<ResourceCache>();
-    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/gladiador2.scml");
+    AnimationSet2D* animationSet = cache->GetResource<AnimationSet2D>("Urho2D/gladiador.scml");
     if (!animationSet)
         return;
 
@@ -77,7 +77,7 @@ void PlayerEntity::Start()
     circle->SetCenter(0,-0.6f);
     circle->SetRadius(1.0f);
     circle->SetDensity(1.0f);
-    circle->SetFriction(0.4f);
+    circle->SetFriction(1.0f);
     circle->SetRestitution(0.0f);
     circle->SetMaskBits(65534);
     circle->SetCategoryBits(16384);
@@ -294,7 +294,8 @@ bool PlayerEntity::CastGround()
     PhysicsWorld2D* physicsWorld = GetScene()->GetComponent<PhysicsWorld2D>();
     /*cast ground*/
     Vector2 originpos = node_->GetPosition2D();
-    Vector2 FinishC = originpos + Vector2(0,-0.35);
+    Vector2 FinishC = originpos + Vector2(-0.16f,-0.35);
+    Vector2 FinishD = originpos + Vector2(0.16f,-0.35);
 
     PhysicsRaycastResult2D RayCastC;
     physicsWorld->RaycastSingle(RayCastC, originpos , FinishC,1);
@@ -303,6 +304,17 @@ bool PlayerEntity::CastGround()
                             Color(1, 0, 0, 1),
                             false );
     if ( RayCastC.body_)
+    {
+        return true;
+    }
+
+    PhysicsRaycastResult2D RayCastD;
+    physicsWorld->RaycastSingle(RayCastD, originpos , FinishD,1);
+    debug->AddLine( Vector3(originpos.x_, originpos.y_,0),
+                            Vector3(FinishD.x_, FinishD.y_,0),
+                            Color(1, 0, 0, 1),
+                            false );
+    if ( RayCastD.body_)
     {
         return true;
     }

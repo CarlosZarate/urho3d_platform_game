@@ -329,7 +329,7 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
             player_->SetAtack();
     }
     PhysicsWorld2D* physicsWorld = scene_->GetComponent<PhysicsWorld2D>();
-    //physicsWorld->DrawDebugGeometry();
+    physicsWorld->DrawDebugGeometry();
 
     cameraNode_->Translate2D((posplayer - cameraNode_->GetPosition2D())*0.05);
     bgNode_->SetPosition2D(cameraNode_->GetPosition2D());
@@ -345,6 +345,12 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
     {
         isPause = !isPause;
         scene_->SetUpdateEnabled(isPause);
+    }
+
+    if (input->GetKeyPress('R'))
+    {
+        stateManager_->PopStack();
+		stateManager_->PushToStack("GamePlayState");
     }
 
     if (input->GetKeyPress('O'))

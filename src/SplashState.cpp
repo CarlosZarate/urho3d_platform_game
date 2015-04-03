@@ -20,39 +20,13 @@
 // THE SOFTWARE.
 //
 
-#include "SplashState.h"
-#include "Object.h"
 #include "CoreEvents.h"
-#include "ResourceCache.h"
-#include "List.h"
 #include "UI.h"
-
-#include "Button.h"
-#include "CheckBox.h"
-#include "CoreEvents.h"
 #include "Engine.h"
-#include "Input.h"
-#include "LineEdit.h"
-#include "Text.h"
-#include "UIEvents.h"
-#include "Window.h"
-
-#include "DebugNew.h"
 #include "Texture2D.h"
 #include "ResourceCache.h"
-#include "XMLFile.h"
-#include "Octree.h"
-#include "StaticModel.h"
-#include "Material.h"
-#include "Model.h"
-#include "Light.h"
-#include "Vector3.h"
-#include "Quaternion.h"
-#include "Camera.h"
-#include "Renderer.h"
-#include "Viewport.h"
-#include "Font.h"
 
+#include "SplashState.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // AppState Member Functions

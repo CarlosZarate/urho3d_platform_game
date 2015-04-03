@@ -1,11 +1,39 @@
-[Wed Apr 01 23:54:14 2015] INFO: Opened log file PlatformGame.log
-[Wed Apr 01 23:54:14 2015] INFO: Created 3 worker threads
-[Wed Apr 01 23:54:14 2015] INFO: Added resource path D:/workspace/c++/platform_game/Data/
-[Wed Apr 01 23:54:14 2015] INFO: Added resource path D:/workspace/c++/platform_game/CoreData/
-[Wed Apr 01 23:54:14 2015] WARNING: Skipped autoload folder Extra as it does not exist
-[Wed Apr 01 23:54:14 2015] INFO: Set screen mode 800x600 windowed
-[Wed Apr 01 23:54:14 2015] INFO: Initialized input
-[Wed Apr 01 23:54:14 2015] INFO: Initialized user interface
-[Wed Apr 01 23:54:14 2015] INFO: Initialized renderer
-[Wed Apr 01 23:54:14 2015] INFO: Set audio mode 44100 Hz stereo interpolated
-[Wed Apr 01 23:54:14 2015] INFO: Initialized engine
+[Thu Apr 02 19:31:48 2015] INFO: Opened log file PlatformGame.log
+[Thu Apr 02 19:31:48 2015] INFO: Created 3 worker threads
+[Thu Apr 02 19:31:48 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/Data/
+[Thu Apr 02 19:31:48 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/CoreData/
+[Thu Apr 02 19:31:48 2015] WARNING: Skipped autoload folder Extra as it does not exist
+[Thu Apr 02 19:31:48 2015] INFO: Set screen mode 800x600 windowed
+[Thu Apr 02 19:31:48 2015] INFO: Initialized input
+[Thu Apr 02 19:31:48 2015] INFO: Initialized user interface
+[Thu Apr 02 19:31:49 2015] INFO: Initialized renderer
+[Thu Apr 02 19:31:49 2015] INFO: Set audio mode 44100 Hz stereo interpolated
+[Thu Apr 02 19:31:49 2015] INFO: Initialized engine
+
+Used resources:
+Textures/Ramp.png
+Textures/Spot.png
+Textures/UI.png
+Urho2D/casco.png
+Urho2D/heart.png
+Urho2D/tiles_spritesheet2.png
+Urho2D/gladiador.png
+Urho2D/tortuga2.png
+Urho2D/shooteffects.png
+Techniques/NoTexture.xml
+RenderPaths/Forward.xml
+UI/DefaultStyle.xml
+Scenes/nodo_map.xml
+Textures/UrhoIcon.png
+Fonts/Anonymous Pro.ttf
+Urho2D/nivel1.tmx
+Urho2D/bg.png
+Urho2D/platform.png
+Urho2D/bullet2.png
+Urho2D/gladiador.xml
+Urho2D/tortuga2.xml
+Urho2D/shooteffects.xml
+Urho2D/gladiador.scml
+Urho2D/tortuga2.scml
+Urho2D/shooteffects.scml
+Shaders/GLSL/Basic.glsl

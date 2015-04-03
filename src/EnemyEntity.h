@@ -1,9 +1,6 @@
 #pragma once
 #include "LogicComponent.h"
-#include "Controls.h"
 #include "StaticSprite2D.h"
-#include "Vector2.h"
-#include "Node.h"
 
 // All Urho3D classes reside in namespace Urho3D
 namespace Urho3D

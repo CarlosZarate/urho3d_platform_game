@@ -6,7 +6,7 @@ using namespace Urho3D;
 
 class BulletEntity :  public LogicComponent
 {
-	OBJECT(Bullet);
+	OBJECT(BulletEntity);
     public:
         BulletEntity(Context* context);
         ~BulletEntity();

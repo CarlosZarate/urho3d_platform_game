@@ -58,6 +58,7 @@ public:
 private:
     bool CastGround();
     void ReduceHeart();
+    float frametimecounter = 0;
 
     bool isDead = false;
     bool isjump = true;

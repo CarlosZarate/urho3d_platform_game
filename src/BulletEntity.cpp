@@ -1,11 +1,11 @@
-#include "BulletEntity.h"
+
+#include "iostream"
+
 #include "Context.h"
 #include "Node.h"
 #include "RigidBody2D.h"
-#include "iostream"
-#include "AnimationSet2D.h"
-#include "AnimatedSprite2D.h"
-#include "ResourceCache.h"
+
+#include "BulletEntity.h"
 
 BulletEntity::BulletEntity(Context* context) : LogicComponent(context)
 {

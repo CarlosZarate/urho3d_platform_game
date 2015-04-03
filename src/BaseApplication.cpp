@@ -1,7 +1,6 @@
 
 #include "Sprite.h"
 #include "Console.h"
-#include "Cursor.h"
 #include "DebugHud.h"
 #include "Engine.h"
 #include "FileSystem.h"
@@ -23,6 +22,7 @@ void BaseApplication::Setup()
     engineParameters_["WindowTitle"] = "April's Quest";
     engineParameters_["LogName"]     = GetTypeName() + ".log";
     engineParameters_["FullScreen"]  = false;
+    engineParameters_["VSync"]  = true;
     engineParameters_["Headless"]    = false;
     engineParameters_["WindowWidth"] = 800;
     engineParameters_["WindowHeight"]= 600;

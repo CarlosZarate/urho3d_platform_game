@@ -50,7 +50,7 @@ void PlayerEntity::Start()
         return;
 
     AnimatedSprite2D* animatedSprite = node_->CreateComponent<AnimatedSprite2D>();
-    animatedSprite->SetLayer(100);
+    animatedSprite->SetLayer(-1);
     // Set animation
     animatedSprite->SetAnimation(animationSet, "idle");
     animatedSprite->SetSpeed(1.5f);
@@ -77,7 +77,7 @@ void PlayerEntity::Start()
     circle->SetCenter(0,-0.6f);
     circle->SetRadius(1.0f);
     circle->SetDensity(1.0f);
-    circle->SetFriction(1.0f);
+    circle->SetFriction(0.7f);
     circle->SetRestitution(0.0f);
     circle->SetMaskBits(65534);
     circle->SetCategoryBits(16384);
@@ -102,6 +102,8 @@ void PlayerEntity::Update(float timeStep)
 
     if(isDead)
     {
+        if(CastGround())
+            node_->RemoveComponent<RigidBody2D>();
         if(animatesprite->GetAnimation()!= "dead")
             animatesprite->SetAnimation("dead", LM_DEFAULT);
         return;
@@ -151,7 +153,7 @@ void PlayerEntity::Update(float timeStep)
             timeBusy = 0;
         }
     }
-
+    body->SetLinearVelocity(Vector2::ZERO);
     body->SetLinearVelocity(vel);
 
     if (controls_.IsDown(CTRL_UP))

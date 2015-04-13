@@ -42,6 +42,7 @@
 #include "TmxFile2D.h"
 #include "TileMap2D.h"
 
+#include "MapLoader.h"
 #include "GamePlayState.h"
 #include "MovablePlatform.h"
 
@@ -55,6 +56,7 @@ GamePlayState::GamePlayState(Context* context) : State(context)
     PlayerEntity::RegisterObject(context);
 	BulletEntity::RegisterObject(context);
 	EnemyEntity::RegisterObject(context);
+	MapLoader::RegisterObject(context);
 	MovablePlatform::RegisterObject(context);
 	context_->RegisterSubsystem(new LuaScript(context_));
 }
@@ -109,10 +111,6 @@ void GamePlayState::CreateScene()
 
     nodeWall = scene_->CreateChild("NodoWall");
 
-    XMLFile* nodoXMLFile = cache->GetResource<XMLFile>("Scenes/nodo_map.xml");
-    XMLElement nodoXML(nodoXMLFile->GetRoot());
-    nodeWall->LoadXML(nodoXML);
-
     // Create 2D physics world component
 
     bgNode_ = scene_->CreateChild("Target");
@@ -126,7 +124,7 @@ void GamePlayState::CreateScene()
     bgNode_->SetScale(5.0f);
 
     // Get tmx file
-    /*TmxFile2D* tmxFile = cache->GetResource<TmxFile2D>("Maps/nivel1.tmx");
+    TmxFile2D* tmxFile = cache->GetResource<TmxFile2D>("Urho2D/nivel1.tmx");
     if (!tmxFile)
         return;
 
@@ -135,43 +133,22 @@ void GamePlayState::CreateScene()
 
     TileMap2D* tileMap = tileMapNode->CreateComponent<TileMap2D>();
     // Set animation
-    tileMap->SetTmxFile(tmxFile);*/
+    tileMap->SetTmxFile(tmxFile);
 
-    JSONFile* data = new JSONFile(context_);
-    File file(context_, "Data/Scenes/MapNode.json");
-    data->Load(file);
+    MapLoader* maploader = scene_->CreateComponent<MapLoader>();
+    maploader->Load("Data/Scenes/MapNode.json");
 
-    JSONValue rootjson = data->GetRoot();
 
-    JSONValue blocks = rootjson.GetChild("blocks");
-
-    Vector2 position = rootjson.GetVector2("playerpost");
-
-    // Get animation set
-    SharedPtr<Node> spriteNode(scene_->CreateChild("Player"));
-    spriteNode->SetPosition2D(position);
-    player_ = spriteNode->CreateComponent<PlayerEntity>();
+    player_ = scene_->GetChild("Player",false)->GetComponent<PlayerEntity>();
     player_->SetHeart(player_hearts);
-    spriteNode->SetScale(0.2f);
 
     /*LuaFile* scriptFile = cache->GetResource<LuaFile>("Scripts/player.lua");
     if (!scriptFile)
         return;
     LuaScriptInstance* instance = spriteNode->CreateComponent<LuaScriptInstance>();
-    instance->CreateObject(scriptFile, "Rotator");
+    instance->CreateObject(scriptFile, "Rotator");*/
 
-    /* platform*/
-    Node* platformnode(scene_->CreateChild("Platform"));
-
-    MovablePlatform* movplat = platformnode->CreateComponent<MovablePlatform>();
-    movplat->SetPoints(Vector2(8,18), Vector2(10.8f,18));
-
-    /*end platform*/
-
-    SharedPtr<Node> enemy(scene_->CreateChild("Enemy"));
-    enemy->SetScale(0.3f);
-    enemy->SetPosition2D(Vector2(13,18.5f));
-    EnemyEntity* enemy_ = enemy->CreateComponent<EnemyEntity>();
+    cameraNode_->SetPosition(Vector3(4.2f ,18.9f, -10.0f));
 }
 
 void GamePlayState::CreateUI()
@@ -217,6 +194,13 @@ void GamePlayState::ReduceHearts(StringHash eventType, VariantMap& eventData)
     }
 }
 
+void GamePlayState::EnemyDied(StringHash eventType, VariantMap& eventData)
+{
+    using namespace EnemyDied;
+    Node* enemynode = static_cast<Node*>(eventData[P_NODE].GetPtr());
+    enemynode->Remove();
+}
+
 void GamePlayState::SetupViewport()
 {
     Renderer* renderer = GetSubsystem<Renderer>();
@@ -229,13 +213,11 @@ void GamePlayState::SetupViewport()
 
 void GamePlayState::SubscribeToEvents()
 {
-    // Subscribe HandleUpdate() function for processing update events
     SubscribeToEvent(E_UPDATE, HANDLER(GamePlayState, HandleUpdate));
     SubscribeToEvent(E_PHYSICSBEGINCONTACT2D, HANDLER(GamePlayState, HandleBeginContact));
     SubscribeToEvent(E_PHYSICSENDCONTACT2D, HANDLER(GamePlayState, HandleEndContact));
     SubscribeToEvent(E_PLAYERHURT, HANDLER(GamePlayState, ReduceHearts));
-    /*SubscribeToEvent(E_JOYSTICKBUTTONDOWN, HANDLER(GamePlayState, HandleJoystickButtonDownPressed));
-    SubscribeToEvent(E_JOYSTICKAXISMOVE, HANDLER(GamePlayState, HandleJoystickAxisMove));*/
+    SubscribeToEvent(E_ENEMYDIED, HANDLER(GamePlayState, EnemyDied));
 }
 
 
@@ -313,23 +295,55 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
 
     Vector2 posplayer(player_->GetNode()->GetPosition2D());
 
-    if (player_ && !isDead)
+    if(input->GetJoystickByIndex(0))
     {
-        // Clear previous controls
-        player_->controls_.Set(CTRL_DOWN | CTRL_LEFT | CTRL_RIGHT | LOOK_LEFT, false);
-        //keyboard
-        //player_->controls_.Set(CTRL_DOWN, input->GetKeyDown(KEY_DOWN));
-        player_->controls_.Set(CTRL_LEFT, input->GetKeyDown(KEY_LEFT) || input->GetJoystickByIndex(0)->GetButtonDown(CONTROLLER_BUTTON_DPAD_LEFT));
-        player_->controls_.Set(CTRL_RIGHT, input->GetKeyDown(KEY_RIGHT) || input->GetJoystickByIndex(0)->GetButtonDown(CONTROLLER_BUTTON_DPAD_RIGHT));
+        if (player_ && !isDead)
+        {
+            // Clear previous controls
+            player_->controls_.Set(CTRL_DOWN | CTRL_LEFT | CTRL_RIGHT | LOOK_LEFT, false);
+            //keyboard
+            //player_->controls_.Set(CTRL_DOWN, input->GetKeyDown(KEY_DOWN));
+            player_->controls_.Set(CTRL_LEFT, input->GetJoystickByIndex(0)->GetButtonDown(CONTROLLER_BUTTON_DPAD_LEFT));
+            player_->controls_.Set(CTRL_RIGHT, input->GetJoystickByIndex(0)->GetButtonDown(CONTROLLER_BUTTON_DPAD_RIGHT));
 
-        if(input->GetKeyPress(KEY_SPACE) || input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_A))
-            player_->SetJump();
+            if(input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_A))
+                player_->SetJump();
 
-        if(input->GetKeyPress('C') || input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_X))
-            player_->SetAtack();
+            if(input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_X))
+                player_->SetAtack();
+        }
+
+        if (input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_START))
+        {
+            isPause = !isPause;
+            scene_->SetUpdateEnabled(isPause);
+        }
+    }
+    else{
+        if (player_ && !isDead)
+        {
+            // Clear previous controls
+            player_->controls_.Set(CTRL_DOWN | CTRL_LEFT | CTRL_RIGHT | LOOK_LEFT, false);
+            //keyboard
+            //player_->controls_.Set(CTRL_DOWN, input->GetKeyDown(KEY_DOWN));
+            player_->controls_.Set(CTRL_LEFT, input->GetKeyDown(KEY_LEFT));
+            player_->controls_.Set(CTRL_RIGHT, input->GetKeyDown(KEY_RIGHT));
+
+            if(input->GetKeyPress(KEY_SPACE))
+                player_->SetJump();
+
+            if(input->GetKeyPress('C'))
+                player_->SetAtack();
+        }
+
+        if (input->GetKeyPress('P'))
+        {
+            isPause = !isPause;
+            scene_->SetUpdateEnabled(isPause);
+        }
     }
     PhysicsWorld2D* physicsWorld = scene_->GetComponent<PhysicsWorld2D>();
-    physicsWorld->DrawDebugGeometry();
+    //physicsWorld->DrawDebugGeometry();
 
     cameraNode_->Translate2D((posplayer - cameraNode_->GetPosition2D())*0.05);
     bgNode_->SetPosition2D(cameraNode_->GetPosition2D());
@@ -341,10 +355,15 @@ void GamePlayState::HandleUpdate(StringHash eventType, VariantMap& eventData)
         RemoveBulletList.Pop();
     }
 
-    if (input->GetKeyPress('P') || input->GetJoystickByIndex(0)->GetButtonPress(CONTROLLER_BUTTON_START))
+    if(isDead)
+        timerrestar+=timeStep;
+
+    if(timerrestar > 3)
     {
-        isPause = !isPause;
-        scene_->SetUpdateEnabled(isPause);
+        stateManager_->PopStack();
+		stateManager_->PushToStack("GamePlayState");
+		timerrestar = 0;
+		isDead = false;
     }
 
     if (input->GetKeyPress('R'))

@@ -57,8 +57,8 @@ void EnemyEntity::Start()
     RigidBody2D* bodysprite = node_->CreateComponent<RigidBody2D>();
     bodysprite->SetBodyType(BT_DYNAMIC);
     bodysprite->SetFixedRotation(true);
-    bodysprite->SetBullet(false);
-    bodysprite->SetLinearVelocity(Vector2::ZERO);
+    //bodysprite->SetBullet(false);
+    //bodysprite->SetLinearVelocity(Vector2::ZERO);
     CollisionCircle2D* circle = node_->CreateComponent<CollisionCircle2D>();
     // Set radius
     circle->SetRadius(1.2f);
@@ -83,8 +83,26 @@ void EnemyEntity::Stop()
 
 void EnemyEntity::Update(float timeStep)
 {
+    if(isBusy && isDead)
+    {
+        CurrentTime+= timeStep;
+        if(CurrentTime > timeChargue)
+        {
+            using namespace EnemyDied;
+            VariantMap& eventData = GetEventDataMap();
+            eventData[P_NODE] = node_;
+            SendEvent(E_ENEMYDIED, eventData);
+            isBusy = false;
+        }
+        return;
+    }
+
+    if(isDead)
+        return;
+
     UpdateCast();
     RigidBody2D* body = GetComponent<RigidBody2D>();
+    float y = body->GetLinearVelocity().y_;
 
     if(isBusy)
     {
@@ -125,7 +143,7 @@ void EnemyEntity::Update(float timeStep)
                 animatesprite->SetAnimation("walk", LM_DEFAULT);
             }
             body->SetLinearVelocity(Vector2::ZERO);
-            body->SetLinearVelocity(vel);
+            body->SetLinearVelocity(Vector2(vel.x_, y));
         }
     }
 }
@@ -134,6 +152,8 @@ void EnemyEntity::UpdateCast()
 {
     DebugRenderer* debug = GetScene()->GetComponent<DebugRenderer>();
     PhysicsWorld2D* physicsWorld = GetScene()->GetComponent<PhysicsWorld2D>();
+    RigidBody2D* body = GetComponent<RigidBody2D>();
+
     /*cast ground*/
     Vector2 originpos = node_->GetPosition2D();
     Vector2 FinishC;
@@ -154,7 +174,7 @@ void EnemyEntity::UpdateCast()
 
     PhysicsRaycastResult2D RayCastC;
     physicsWorld->RaycastSingle(RayCastC, originpos , FinishC,1);
-    if ( !RayCastC.body_)
+    if ( !RayCastC.body_ && body->GetLinearVelocity().y_ >= -0.05f)
     {
         SetReturn();
     }
@@ -236,12 +256,23 @@ void EnemyEntity::SetHurt(Vector2 pos)
         animatesprite->SetAnimation("hurt", LM_FORCE_CLAMPED);
         isBusy = true;
         CurrentTime = 0;
-        timeBusy = 0.26f;
-        RigidBody2D* body = GetComponent<RigidBody2D>();
-        if(pos.x_>node_->GetPosition2D().x_)
-            body->ApplyLinearImpulse(Vector2(-0.5f,0.5f),node_->GetPosition2D(),true );
-        else
-            body->ApplyLinearImpulse(Vector2(0.5f,0.5f),node_->GetPosition2D(),true );
+        life-=2;
+        if(life >= 0)
+        {
+            timeBusy = 0.26f;
+            RigidBody2D* body = GetComponent<RigidBody2D>();
+            if(pos.x_>node_->GetPosition2D().x_)
+                body->ApplyLinearImpulse(Vector2(-0.5f,0.5f),node_->GetPosition2D(),true );
+            else
+                body->ApplyLinearImpulse(Vector2(0.5f,0.5f),node_->GetPosition2D(),true );
+        }
+        else{
+            isDead = true;
+            animatesprite->SetAnimation("dead", LM_FORCE_CLAMPED);
+            timeBusy = 2.0f;
+            node_->RemoveComponent<RigidBody2D>();
+        }
+
     }
 }
 
@@ -249,7 +280,6 @@ void EnemyEntity::SetHurt(Vector2 pos)
 void EnemyEntity::Shoot()
 {
     ResourceCache* cache = GetSubsystem<ResourceCache>();
-    //Vector2 dir = Vector2(0.02f,0.1f);
 
     Sprite2D* bulletSprite = cache->GetResource<Sprite2D>("Urho2D/bullet2.png");
     if (!bulletSprite)
@@ -275,7 +305,7 @@ void EnemyEntity::Shoot()
     circleshape->SetMaskBits(57340);
     circleshape->SetCategoryBits(2);
 
-	BulletEntity* b = bulletNode_->CreateComponent<BulletEntity>();
+	bulletNode_->CreateComponent<BulletEntity>();
 
 	Node* nodebullet2 = bulletNode_->Clone();
 	Node* nodebullet3 = bulletNode_->Clone();
@@ -285,21 +315,6 @@ void EnemyEntity::Shoot()
     nodebullet3->GetComponent<RigidBody2D>()->ApplyLinearImpulse(Vector2(-0.02f,0.13f),node_->GetPosition2D(),true );
     nodebullet4->GetComponent<RigidBody2D>()->ApplyLinearImpulse(Vector2(-0.030f,0.13f),node_->GetPosition2D(),true );
 	bulletBody->ApplyLinearImpulse(Vector2(0.02f,0.13f),node_->GetPosition2D(),true );
-}
-
-void EnemyEntity::SetTarget()
-{
-    objectsprite->SetColor(Color::YELLOW);
-}
-
-void EnemyEntity::SetUntarget()
-{
-    objectsprite->SetColor(Color::TRANSPARENT);
-}
-
-void EnemyEntity::SetObjetive()
-{
-    objectsprite->SetColor(Color::RED);
 }
 
 void EnemyEntity::setRight()
@@ -316,11 +331,6 @@ void EnemyEntity::setLeft()
     animatesprite->SetFlipX(true);
     vel.x_ = 0.6f;
     isLeft = true;
-}
-
-void EnemyEntity::SetTarget(Node* target)
-{
-    target_ = target;
 }
 
 void EnemyEntity::SetReturn()

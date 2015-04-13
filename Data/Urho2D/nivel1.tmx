@@ -1937,7 +1937,7 @@
    <tile gid="152"/>
    <tile gid="138"/>
    <tile gid="138"/>
-   <tile gid="0"/>
+   <tile gid="138"/>
    <tile gid="152"/>
    <tile gid="152"/>
    <tile gid="152"/>
@@ -1964,7 +1964,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="80"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2027,7 +2027,7 @@
    <tile gid="152"/>
    <tile gid="7"/>
    <tile gid="7"/>
-   <tile gid="0"/>
+   <tile gid="7"/>
    <tile gid="152"/>
    <tile gid="152"/>
    <tile gid="152"/>

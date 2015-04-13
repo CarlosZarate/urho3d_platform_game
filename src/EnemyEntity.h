@@ -86,6 +86,8 @@ private:
     float CurrentTime = 0;
     bool isCharge = false;
     float timeChargue = 0;
+    int life = 8;
+    bool isDead = false;
 };
 
 

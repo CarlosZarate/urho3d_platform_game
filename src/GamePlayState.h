@@ -76,6 +76,8 @@ private:
 
     void ReduceHearts(StringHash eventType, VariantMap& eventData);
 
+    void EnemyDied(StringHash eventType, VariantMap& eventData);
+
     void CreateHearts();
 
 	SharedPtr<Scene> scene_;
@@ -100,6 +102,7 @@ private:
     bool upPressButoon = true;
     bool isPause = false;
     bool isDead = false;
+    float timerrestar = 0;
 
 protected:
     Vector2 GetMousePositionXY();

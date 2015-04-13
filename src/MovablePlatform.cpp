@@ -25,35 +25,29 @@ void MovablePlatform::RegisterObject(Context* context)
 void MovablePlatform::Start()
 {
     ResourceCache* cache = GetSubsystem<ResourceCache>();
+    PODVector<Vector2> vertices;
+    vertices.Push(Vector2(-0.7f,0.1f));
+    vertices.Push(Vector2(0.7f,0.1f));
+    vertices.Push(Vector2(0.7f,-0.1f));
+    vertices.Push(Vector2(-0.7f,-0.1f));
+
+    Sprite2D* movplatformsprite = cache->GetResource<Sprite2D>("Urho2D/movplatform.png");
+    if (!movplatformsprite)
+        return;
+
+    StaticSprite2D* movplatformstaticSprite = node_->CreateComponent<StaticSprite2D>();
+    movplatformstaticSprite->SetSprite(movplatformsprite);
 
     RigidBody2D* platfotmbody = node_->CreateComponent<RigidBody2D>();
     platfotmbody->SetBodyType(BT_KINEMATIC);
     platfotmbody->SetFixedRotation(true);
 
-    PODVector<Vector2> vertices;
-    vertices.Push(Vector2(-0.7f,0.2f));
-    vertices.Push(Vector2(0.7f,0.2f));
-    vertices.Push(Vector2(0.7f,-0.2f));
-    vertices.Push(Vector2(-0.7f,-0.2f));
-
     CollisionPolygon2D* box = node_->CreateComponent<CollisionPolygon2D>();
     box->SetVertices(vertices);
-    // Set density
     box->SetDensity(1.0f);
-    // Set friction.
-    box->SetFriction(0.5f);
-    // Set restitution
-    box->SetRestitution(0.0f);
-
+    box->SetFriction(0.4f);
+    box->SetRestitution(0.1f);
     box->SetCategoryBits(32768);
-
-    platfotmbody->SetLinearVelocity(Vector2(1,0));
-    Sprite2D* bgsprite = cache->GetResource<Sprite2D>("Urho2D/platform.png");
-    if (!bgsprite)
-        return;
-
-    StaticSprite2D* bgstaticsprite = node_->CreateComponent<StaticSprite2D>();
-    bgstaticsprite->SetSprite(bgsprite);
 }
 
 void MovablePlatform::DelayedStart()
@@ -71,7 +65,7 @@ void MovablePlatform::Update(float timeStep)
     RigidBody2D* body = GetComponent<RigidBody2D>();
     if(!isreturned)
     {
-        if(node_->GetPosition2D().x_ > pointB_.x_)
+        if(node_->GetPosition2D().Length() > pointB_.Length())
         {
             isreturned = true;
             body->SetLinearVelocity(body->GetLinearVelocity()*-1);
@@ -79,7 +73,7 @@ void MovablePlatform::Update(float timeStep)
     }
     else
     {
-        if(node_->GetPosition2D().x_ < pointA_.x_)
+        if(node_->GetPosition2D().Length() < pointA_.Length())
         {
             isreturned = false;
             body->SetLinearVelocity(body->GetLinearVelocity()*-1);
@@ -90,8 +84,21 @@ void MovablePlatform::Update(float timeStep)
 
 void MovablePlatform::SetPoints(Vector2 pointA, Vector2 pointB)
 {
-    pointA_ = pointA;
-    pointB_ = pointB;
+    RigidBody2D* body = GetComponent<RigidBody2D>();
+    if(pointA.Length() < pointB.Length())
+    {
+        pointA_ = pointA;
+        pointB_ = pointB;
+    }
+    else
+    {
+        isreturned = true;
+        pointB_ = pointA;
+        pointA_ = pointB;
+    }
+    Vector2 dir(pointB - pointA);
+    dir.Normalize();
     node_->SetPosition2D(pointA_);
+    body->SetLinearVelocity(dir);
 }
 

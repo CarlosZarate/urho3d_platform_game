@@ -1,14 +1,14 @@
-[Thu Apr 02 19:31:48 2015] INFO: Opened log file PlatformGame.log
-[Thu Apr 02 19:31:48 2015] INFO: Created 3 worker threads
-[Thu Apr 02 19:31:48 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/Data/
-[Thu Apr 02 19:31:48 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/CoreData/
-[Thu Apr 02 19:31:48 2015] WARNING: Skipped autoload folder Extra as it does not exist
-[Thu Apr 02 19:31:48 2015] INFO: Set screen mode 800x600 windowed
-[Thu Apr 02 19:31:48 2015] INFO: Initialized input
-[Thu Apr 02 19:31:48 2015] INFO: Initialized user interface
-[Thu Apr 02 19:31:49 2015] INFO: Initialized renderer
-[Thu Apr 02 19:31:49 2015] INFO: Set audio mode 44100 Hz stereo interpolated
-[Thu Apr 02 19:31:49 2015] INFO: Initialized engine
+[Mon Apr 13 18:31:51 2015] INFO: Opened log file PlatformGame.log
+[Mon Apr 13 18:31:51 2015] INFO: Created 3 worker threads
+[Mon Apr 13 18:31:51 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/Data/
+[Mon Apr 13 18:31:51 2015] INFO: Added resource path D:/workspace/c++/demo_platformgame/CoreData/
+[Mon Apr 13 18:31:51 2015] WARNING: Skipped autoload folder Extra as it does not exist
+[Mon Apr 13 18:31:51 2015] INFO: Set screen mode 1280x800 windowed
+[Mon Apr 13 18:31:51 2015] INFO: Initialized input
+[Mon Apr 13 18:31:51 2015] INFO: Initialized user interface
+[Mon Apr 13 18:31:51 2015] INFO: Initialized renderer
+[Mon Apr 13 18:31:51 2015] INFO: Set audio mode 44100 Hz stereo interpolated
+[Mon Apr 13 18:31:51 2015] INFO: Initialized engine
 
 Used resources:
 Textures/Ramp.png
@@ -17,23 +17,19 @@ Textures/UI.png
 Urho2D/casco.png
 Urho2D/heart.png
 Urho2D/tiles_spritesheet2.png
-Urho2D/gladiador.png
 Urho2D/tortuga2.png
-Urho2D/shooteffects.png
+Urho2D/gladiador.png
 Techniques/NoTexture.xml
 RenderPaths/Forward.xml
 UI/DefaultStyle.xml
-Scenes/nodo_map.xml
+GUI/MainMenu.xml
 Textures/UrhoIcon.png
 Fonts/Anonymous Pro.ttf
-Urho2D/nivel1.tmx
 Urho2D/bg.png
-Urho2D/platform.png
-Urho2D/bullet2.png
-Urho2D/gladiador.xml
+Urho2D/movplatform.png
+Urho2D/nivel1.tmx
 Urho2D/tortuga2.xml
-Urho2D/shooteffects.xml
-Urho2D/gladiador.scml
+Urho2D/gladiador.xml
 Urho2D/tortuga2.scml
-Urho2D/shooteffects.scml
+Urho2D/gladiador.scml
 Shaders/GLSL/Basic.glsl

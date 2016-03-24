@@ -1,16 +1,16 @@
 
-#include "Context.h"
-#include "Sprite.h"
-#include "CoreEvents.h"
-#include "Button.h"
-#include "Engine.h"
-#include "Input.h"
-#include "UIEvents.h"
-#include "Window.h"
-#include "ResourceCache.h"
-#include "XMLFile.h"
-#include "MessageBox.h"
-#include "UI.h"
+#include "Urho3D/Core/Context.h"
+#include "Urho3D/UI/Sprite.h"
+#include "Urho3D/Core/CoreEvents.h"
+#include "Urho3D/UI/Button.h"
+#include "Urho3D/Engine/Engine.h"
+#include "Urho3D/Input/Input.h"
+#include "Urho3D/UI/UIEvents.h"
+#include "Urho3D/UI/Window.h"
+#include "Urho3D/Resource/ResourceCache.h"
+#include "Urho3D/Resource/XMLFile.h"
+#include "Urho3D/UI/MessageBox.h"
+#include "Urho3D/UI/UI.h"
 
 #include "MainMenuState.h"
 
@@ -52,7 +52,7 @@ bool MenuState::Begin()
 	InitControls();
 
 	// Subscribe key down event
-	SubscribeToEvent(E_KEYDOWN, HANDLER(MenuState, HandleKeyDown));
+	SubscribeToEvent(E_KEYDOWN, URHO3D_HANDLER(MenuState, HandleKeyDown));
 
 
 	// Call base class implementation
@@ -93,16 +93,16 @@ void MenuState::InitControls()
 		return;
 
 	Button* button = (Button*)window_->GetChild("PlayButton", true);
-	SubscribeToEvent(button, E_RELEASED, HANDLER(MenuState, HandlePlayButton));
+	SubscribeToEvent(button, E_RELEASED, URHO3D_HANDLER(MenuState, HandlePlayButton));
 
 	button = (Button*)window_->GetChild("OptionsButton", true);
-	SubscribeToEvent(button, E_RELEASED, HANDLER(MenuState, HandleOptionsButton));
+	SubscribeToEvent(button, E_RELEASED, URHO3D_HANDLER(MenuState, HandleOptionsButton));
 
 	button = (Button*)window_->GetChild("CreditsButton", true);
-	SubscribeToEvent(button, E_RELEASED, HANDLER(MenuState, HandleCreditsButton));
+	SubscribeToEvent(button, E_RELEASED, URHO3D_HANDLER(MenuState, HandleCreditsButton));
 
 	button = (Button*)window_->GetChild("QuitButton", true);
-	SubscribeToEvent(button, E_RELEASED, HANDLER(MenuState, HandleQuitButton));
+	SubscribeToEvent(button, E_RELEASED, URHO3D_HANDLER(MenuState, HandleQuitButton));
 }
 
 void MenuState::HandleQuitButton(StringHash eventType, VariantMap& eventData)
@@ -132,7 +132,7 @@ void MenuState::Quit()
 		Button* cancelButton = (Button*)messageBox->GetWindow()->GetChild("CancelButton", true);
 		cancelButton->SetVisible(true);
 		cancelButton->SetFocus(true);
-		SubscribeToEvent(messageBox, E_MESSAGEACK, HANDLER(MenuState, HandleQuitMessageAck));
+		SubscribeToEvent(messageBox, E_MESSAGEACK, URHO3D_HANDLER(MenuState, HandleQuitMessageAck));
 	}
 	messageBox->AddRef();
 }

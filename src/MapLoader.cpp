@@ -1,11 +1,11 @@
 
 #include "iostream"
-#include "PhysicsWorld2D.h"
-#include "CollisionPolygon2D.h"
-#include "RigidBody2D.h"
-#include "File.h"
-#include "JSONFile.h"
-#include "JSONValue.h"
+#include "Urho3D/Urho2D/PhysicsWorld2D.h"
+#include "Urho3D/Urho2D/CollisionPolygon2D.h"
+#include "Urho3D/Urho2D/RigidBody2D.h"
+#include "Urho3D/IO/File.h"
+#include "Urho3D/Resource/JSONFile.h"
+#include "Urho3D/Resource/JSONValue.h"
 
 #include "MovablePlatform.h"
 #include "PlayerEntity.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Application.h"
+#include "Urho3D/Engine/Application.h"
 
 namespace Urho3D
 {
@@ -15,7 +15,7 @@ using namespace Urho3D;
 class BaseApplication : public Application
 {
     // Enable type information.
-    OBJECT(BaseApplication);
+    URHO3D_OBJECT(BaseApplication,Application);
 
 public:
     /// Construct.

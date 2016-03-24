@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Timer.h"
+#include "Urho3D/Core/Timer.h"
 
 // All Urho3D classes reside in namespace Urho3D
 using namespace Urho3D;

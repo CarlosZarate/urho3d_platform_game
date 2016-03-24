@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Object.h"
-#include "Context.h"
-#include "LogicComponent.h"
-#include "Vector2.h"
+#include "Urho3D/Core/Object.h"
+#include "Urho3D/Core/Context.h"
+#include "Urho3D/Scene/LogicComponent.h"
+#include "Urho3D/Math/Vector2.h"
 
 using namespace Urho3D;
 
 class MovablePlatform : public LogicComponent
 {
-OBJECT(MovablePlatform);
+	URHO3D_OBJECT(MovablePlatform,LogicComponent);
 public:
     MovablePlatform(Context* context);
     ~MovablePlatform();

@@ -1,15 +1,15 @@
 #pragma once
-#include "LogicComponent.h"
-#include "StaticSprite2D.h"
+#include "Urho3D/Scene/LogicComponent.h"
+#include "Urho3D/Urho2D/StaticSprite2D.h"
 
 // All Urho3D classes reside in namespace Urho3D
 namespace Urho3D
 {
 
 	/// Enemy died
-	EVENT(E_ENEMYDIED, EnemyDied)
+	URHO3D_EVENT(E_ENEMYDIED, EnemyDied)
 	{                                           // bool
-		PARAM(P_NODE, NodePtr);                 // Node Ptr
+		URHO3D_PARAM(P_NODE, NodePtr);                 // Node Ptr
 	}
 }
 
@@ -21,7 +21,7 @@ const float MAX_TIME = 50;
 
 class EnemyEntity : public LogicComponent
 {
-	OBJECT(EnemyEntity);
+	URHO3D_OBJECT(EnemyEntity, LogicComponent);
 public:
 	//-------------------------------------------------------------------------
 	// Constructors & Destructors

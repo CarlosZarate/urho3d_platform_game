@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Engine.h"
+#include "Urho3D/Engine/Engine.h"
 #include "StateManager.h"
 #include "PlayerEntity.h"
 #include "EnemyEntity.h"
@@ -24,7 +24,7 @@ using namespace Urho3D;
 class GamePlayState : public State
 {
 	// Enable type information.
-	OBJECT(GamePlayState);
+	URHO3D_OBJECT(GamePlayState, State);
 
 
 public:

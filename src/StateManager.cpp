@@ -21,10 +21,10 @@
 //
 
 #include "StateManager.h"
-#include "Object.h"
-#include "CoreEvents.h"
-#include "ResourceCache.h"
-#include "List.h"
+#include "Urho3D/Core/Object.h"
+#include "Urho3D/Core/CoreEvents.h"
+#include "Urho3D/Resource/ResourceCache.h"
+#include "Urho3D/Container/List.h"
 namespace Urho3D
 {
 

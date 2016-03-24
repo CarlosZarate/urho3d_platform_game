@@ -1,14 +1,14 @@
 #pragma once
-#include "Object.h"
-#include "Context.h"
-#include "Ptr.h"
-#include "List.h"
-#include "HashMap.h"
-#include "UIElement.h"
-#include "Sprite.h"
-#include "Node.h"
-#include "Scene.h"
-#include "Text.h"
+#include "Urho3D/Core/Object.h"
+#include "Urho3D/Core/Context.h"
+#include "Urho3D/Container/Ptr.h"
+#include "Urho3D/Container/List.h"
+#include "Urho3D/Container/HashMap.h"
+#include "Urho3D/UI/UIElement.h"
+#include "Urho3D/UI/Sprite.h"
+#include "Urho3D/Scene/Node.h"
+#include "Urho3D/Scene/Scene.h"
+#include "Urho3D/UI/Text.h"
 #include "ExpirationTimer.h"
 
 #include "StateManager.h"
@@ -24,7 +24,7 @@ using namespace Urho3D;
 class SplashState : public State
 {
 	// Enable type information.
-	OBJECT(SplashState);
+	URHO3D_OBJECT(SplashState, State);
 
 
 public:

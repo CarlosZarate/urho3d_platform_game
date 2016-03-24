@@ -1,9 +1,9 @@
 
 #include "iostream"
 
-#include "Context.h"
-#include "Node.h"
-#include "RigidBody2D.h"
+#include "Urho3D/Core/Context.h"
+#include "Urho3D/Scene/Node.h"
+#include "Urho3D/Urho2D/RigidBody2D.h"
 
 #include "BulletEntity.h"
 

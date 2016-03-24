@@ -16,7 +16,7 @@ namespace Urho3D
 ///     - Handling keyboard to move and zoom 2D camera
 class PlatformGame : public BaseApplication
 {
-    OBJECT(PlatformGame);
+    URHO3D_OBJECT(PlatformGame, BaseApplication);
 
 public:
     /// Construct.

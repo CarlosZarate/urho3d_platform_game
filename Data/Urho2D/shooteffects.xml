@@ -1,3 +1,0 @@
-<TextureAtlas imagePath="shooteffects.png">
-	<SubTexture name="bullet3" x="0" y="0" width="192" height="220"/>
-</TextureAtlas>

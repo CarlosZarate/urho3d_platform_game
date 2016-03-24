@@ -14,7 +14,7 @@ using namespace Urho3D;
 class MenuState : public State
 {
 	// Enable type information.
-	OBJECT(MenuState);
+	URHO3D_OBJECT(MenuState,State);
 
 
 public:

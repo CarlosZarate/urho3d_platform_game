@@ -1,11 +1,11 @@
 #include "MovablePlatform.h"
 #include "iostream"
-#include "Node.h"
-#include "CollisionPolygon2D.h"
-#include "RigidBody2D.h"
-#include "Sprite2D.h"
-#include "StaticSprite2D.h"
-#include "ResourceCache.h"
+#include "Urho3D/Scene/Node.h"
+#include "Urho3D/Urho2D/CollisionPolygon2D.h"
+#include "Urho3D/Urho2D/RigidBody2D.h"
+#include "Urho3D/Urho2D/Sprite2D.h"
+#include "Urho3D/Urho2D/StaticSprite2D.h"
+#include "Urho3D/Resource/ResourceCache.h"
 
 MovablePlatform::MovablePlatform(Context* context): LogicComponent(context)
 {

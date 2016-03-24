@@ -1,26 +1,26 @@
 #include "PlayerEntity.h"
-#include "Context.h"
-#include "Component.h"
-#include "Node.h"
-#include "RigidBody2D.h"
+#include "Urho3D/Core/Context.h"
+#include "Urho3D/Scene/Component.h"
+#include "Urho3D/Scene/Node.h"
+#include "Urho3D/Urho2D/RigidBody2D.h"
 #include "iostream"
-#include "AnimatedSprite2D.h"
-#include "AnimationSet2D.h"
-#include "PhysicsEvents2D.h"
+#include "Urho3D/Urho2D/AnimatedSprite2D.h"
+#include "Urho3D/Urho2D/AnimationSet2D.h"
+#include "Urho3D/Urho2D/PhysicsEvents2D.h"
 #include "BulletEntity.h"
-#include "StaticSprite2D.h"
-#include "ResourceCache.h"
-#include "Scene.h"
-#include "CollisionCircle2D.h"
-#include "CollisionPolygon2D.h"
-#include "ConstraintWheel2D.h"
-#include "RigidBody2D.h"
-#include "Input.h"
-#include "Vector3.h"
-#include "Graphics.h"
-#include "Camera.h"
-#include "PhysicsWorld2D.h"
-#include "DebugRenderer.h"
+#include "Urho3D/Urho2D/StaticSprite2D.h"
+#include "Urho3D/Resource/ResourceCache.h"
+#include "Urho3D/Scene/Scene.h"
+#include "Urho3D/Urho2D/CollisionCircle2D.h"
+#include "Urho3D/Urho2D/CollisionPolygon2D.h"
+#include "Urho3D/Urho2D/ConstraintWheel2D.h"
+#include "Urho3D/Urho2D/RigidBody2D.h"
+#include "Urho3D/Input/Input.h"
+#include "Urho3D/Math/Vector3.h"
+#include "Urho3D/Graphics/Graphics.h"
+#include "Urho3D/Graphics/Camera.h"
+#include "Urho3D/Urho2D/PhysicsWorld2D.h"
+#include "Urho3D/Graphics/DebugRenderer.h"
 #include "EnemyEntity.h"
 #include <math.h>
 #include "Box2D/Box2D.h"
@@ -52,7 +52,8 @@ void PlayerEntity::Start()
     AnimatedSprite2D* animatedSprite = node_->CreateComponent<AnimatedSprite2D>();
     animatedSprite->SetLayer(-1);
     // Set animation
-    animatedSprite->SetAnimation(animationSet, "idle");
+    animatedSprite->SetAnimationSet(animationSet);
+    animatedSprite->SetAnimation("idle");
     animatedSprite->SetSpeed(1.5f);
 
     RigidBody2D* bodysprite = node_->CreateComponent<RigidBody2D>();
@@ -184,7 +185,8 @@ void PlayerEntity::Shoot()
 
     AnimatedSprite2D* animatedSprite = bulletNode_->CreateComponent<AnimatedSprite2D>();
     animatedSprite->SetLayer(100);
-    animatedSprite->SetAnimation(animationSet, "shoot1");
+    animatedSprite->SetAnimationSet(animationSet);
+    animatedSprite->SetAnimation("shoot1");
     animatedSprite->SetLoopMode(LM_FORCE_LOOPED);
 
 	RigidBody2D* bulletBody = bulletNode_->CreateComponent<RigidBody2D>();

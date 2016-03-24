@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<element type="Window">
+  <attribute name="Name" value="MainMenu" />
+  <attribute name="Is Movable" value="false" />
+  <attribute name="Is Resizable" value="false" />
+  <attribute name="Position" value="0 0" />
+  <attribute name="Horiz Alignment" value="Center" />
+  <attribute name="Vert Alignment" value="Center" />
+  <attribute name="Size" value="400 83" />
+  <attribute name="Layout Mode" value="Vertical" />
+  <attribute name="Layout Spacing" value="4" />
+  <attribute name="Layout Border" value="6 6 6 6" />
+  <attribute name="Resize Border" value="6 6 6 6" />
+  <element>
+    <attribute name="Min Size" value="0 26" />
+    <attribute name="Max Size" value="2147483647 26" />
+    <attribute name="Layout Mode" value="Horizontal" />
+    <element type="Text">
+      <attribute name="Text" value="Main Menu" />
+      <attribute name="Font Size" value="18" />
+      <attribute name="Text Alignment" value="Center" />   
+    </element>
+  </element>
+  <element type="BorderImage" style="EditorDivider" />
+  <element>
+    <attribute name="Min Size" value="0 25" />
+    <attribute name="Max Size" value="2147483647 2147483647" />
+    <attribute name="Layout Mode" value="Vertical" />
+    <attribute name="Layout Spacing" value="4" />
+    <element type="Button">
+      <attribute name="Name" value="PlayButton" />
+      <attribute name="Min Size" value="70 25" />
+      <attribute name="Max Size" value="1200 25" />
+      <attribute name="Layout Mode" value="Horizontal" />
+      <attribute name="Layout Border" value="1 5 1 1" />
+      <element type="Text">
+        <attribute name="Text" value="Play" />
+        <attribute name="Text Alignment" value="Center" />
+      </element>
+    </element>
+    <element type="Button">
+      <attribute name="Name" value="OptionsButton" />
+      <attribute name="Min Size" value="70 25" />
+      <attribute name="Max Size" value="1200 25" />
+      <attribute name="Layout Mode" value="Horizontal" />
+      <attribute name="Layout Border" value="1 5 1 1" />
+      <element type="Text">
+        <attribute name="Text" value="Options" />
+        <attribute name="Text Alignment" value="Center" />
+      </element>
+    </element>
+    <element type="Button">
+      <attribute name="Name" value="CreditsButton" />
+      <attribute name="Min Size" value="70 25" />
+      <attribute name="Max Size" value="1200 25" />
+      <attribute name="Layout Mode" value="Horizontal" />
+      <attribute name="Layout Border" value="1 5 1 1" />
+      <element type="Text">
+        <attribute name="Text" value="Credits" />
+        <attribute name="Text Alignment" value="Center" />
+      </element>
+    </element>
+    <element type="Button">
+      <attribute name="Name" value="QuitButton" />
+      <attribute name="Min Size" value="70 25" />
+      <attribute name="Max Size" value="1200 25" />
+      <attribute name="Layout Mode" value="Horizontal" />
+      <attribute name="Layout Border" value="1 5 1 1" />
+      <element type="Text">
+        <attribute name="Text" value="Quit" />
+        <attribute name="Text Alignment" value="Center" />
+      </element>
+    </element>
+  </element>
+</element>

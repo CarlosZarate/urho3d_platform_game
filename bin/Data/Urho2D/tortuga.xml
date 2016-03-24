@@ -1,0 +1,10 @@
+<TextureAtlas imagePath="tortuga.png">
+	<SubTexture name="slice01_01" x="170" y="298" width="44" height="48"/>
+	<SubTexture name="slice02_02" x="105" y="247" width="63" height="64"/>
+	<SubTexture name="slice03_03" x="313" y="247" width="36" height="38"/>
+	<SubTexture name="slice04_04" x="170" y="247" width="50" height="49"/>
+	<SubTexture name="slice05_05" x="269" y="247" width="42" height="76"/>
+	<SubTexture name="slice06_06" x="0" y="247" width="103" height="94"/>
+	<SubTexture name="slice07_07" x="222" y="247" width="45" height="80"/>
+	<SubTexture name="slice08_08" x="0" y="0" width="341" height="245"/>
+</TextureAtlas>

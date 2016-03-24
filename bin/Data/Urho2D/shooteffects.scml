@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r3">
+    <folder id="0" name="shooteffects">
+        <file id="0" name="shooteffects/bullet3.png" width="192" height="220" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="effects">
+        <animation id="0" name="shoot1" length="150" interval="100" looping="false">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="23">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="79">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+                <key id="3" time="133">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bullet3">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.304498" y="0.22859" pivot_x="0.234496" pivot_y="0.503862" angle="0" scale_x="0.152255" scale_y="0.274572"/>
+                </key>
+                <key id="1" time="23" spin="0">
+                    <object folder="0" file="0" x="0.304498" y="0.22859" pivot_x="0.234496" pivot_y="0.503862" angle="0" scale_x="0.166284" scale_y="0.312394"/>
+                </key>
+                <key id="2" time="79" spin="0">
+                    <object folder="0" file="0" x="0.304498" y="0.22859" pivot_x="0.234496" pivot_y="0.503862" angle="0" scale_x="0.194342" scale_y="0.255788"/>
+                </key>
+                <key id="3" time="133" spin="0">
+                    <object folder="0" file="0" x="0.304498" y="0.22859" pivot_x="0.234496" pivot_y="0.503862" angle="0" scale_x="0.222401" scale_y="0.155155" a="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

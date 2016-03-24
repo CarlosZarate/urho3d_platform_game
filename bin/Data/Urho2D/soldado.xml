@@ -1,0 +1,13 @@
+<TextureAtlas imagePath="soldado.png">
+	<SubTexture name="idle_01" x="50" y="62" width="48" height="60"/>
+	<SubTexture name="idle_02" x="100" y="62" width="48" height="60"/>
+	<SubTexture name="idle_03" x="100" y="0" width="48" height="60"/>
+	<SubTexture name="run_01" x="50" y="186" width="48" height="60"/>
+	<SubTexture name="run_02" x="50" y="124" width="48" height="60"/>
+	<SubTexture name="run_03" x="100" y="124" width="48" height="60"/>
+	<SubTexture name="run_04" x="50" y="0" width="48" height="60"/>
+	<SubTexture name="run_05" x="0" y="186" width="48" height="60"/>
+	<SubTexture name="run_06" x="0" y="124" width="48" height="60"/>
+	<SubTexture name="run_07" x="0" y="62" width="48" height="60"/>
+	<SubTexture name="run_08" x="0" y="0" width="48" height="60"/>
+</TextureAtlas>
